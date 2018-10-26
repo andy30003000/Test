@@ -13,7 +13,8 @@ public class Main
     public static void main(String[] args)
     {
         MyTestJava8.myTestJava8Method();
-
+        MyEnumSingleton instance = MyEnumSingleton.instance;
+        MySingleton instance2 = MySingleton.getInstance();
     }
 }
 
@@ -54,7 +55,32 @@ public class Main
 
 class MySingleton
 {
-    //Test
+/*    private final static MySingleton instance = new MySingleton();
+
+    private MySingle(){
+        //do nothing
+    }
+
+    public MySingleton getMySingletonInstance(){
+        return instance;
+    }*/
+
+    private volatile static  MySingleton instance = null;
+
+    private MySingleton(){
+        //do nothing
+    }
+
+    public static MySingleton getInstance(){
+
+        if(instance != null){
+            synchronized(MySingleton.class){
+                return new MySingleton();
+            }
+        }else{
+            return instance;
+        }
+    }
 }
 
 
@@ -62,7 +88,6 @@ enum MyEnumSingleton{
     instance;
     private MyEnumSingleton(){
         System.out.println("I am currently in the private enum constructor!!");
-
     }
 }
 
