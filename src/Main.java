@@ -87,7 +87,7 @@ class MySingleton
 enum MyEnumSingleton{
     instance;
     private MyEnumSingleton(){
-        System.out.println("I am currently in the private enum constructor!!");
+        System.out.println("I am currently in the private enum constructor!!!");
     }
 }
 
