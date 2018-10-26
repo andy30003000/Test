@@ -91,4 +91,19 @@ class Person
     public void setAge(int age) {
         this.age = age;
     }
+    @Override
+    public boolean equals(Object o){
+        if(o != null && o instanceof Person) {
+            return ((Person) o).getAge() == this.getAge() &&
+                    ((Person) o).getName().equals(this.getName());
+        }
+        return false;
+
+    }
+
+    @Override
+    public int hashCode(){
+        return this.getAge() + Objects.hash(this.getName());
+    }
+
 }
