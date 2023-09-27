@@ -1,0 +1,69 @@
+'Name macro
+Sub CreateSheets()
+ 
+'Dimension variables and declare data types
+Dim rng As Range
+Dim cell As Range
+ 
+'Enable error handling
+On Error GoTo Errorhandling
+ 
+'Show inputbox to user and prompt for a cell range
+Set rng = Application.InputBox(Prompt:="Select cell range:", _
+Title:="Create sheets", _
+Default:=Selection.Address, Type:=8)
+ 
+'Iterate through cells in selected cell range
+For Each cell In rng
+ 
+    'Check if cell is not empty
+    If cell <> "" Then
+ 
+        'Insert worksheet and name the worksheet based on cell value
+        Sheets.Add.Name = cell
+    End If
+ 
+'Continue with next cell in cell range
+Next cell
+ 
+'Go here if an error occurs
+Errorhandling:
+ 
+'Stop macro
+End Sub
+
+
+'Name macro
+Sub CreateSheets()
+ 
+'Dimension variables and declare data types
+Dim rng As Range
+Dim cell As Range
+ 
+'Enable error handling
+On Error GoTo Errorhandling
+ 
+'Show inputbox to user and prompt for a cell range
+Set rng = Application.InputBox(Prompt:="Select cell range:", _
+Title:="Create sheets", _
+Default:=Selection.Address, Type:=8)
+ 
+'Iterate through cells in selected cell range
+For Each cell In rng
+ 
+    'Check if cell is not empty
+    If cell <> "" Then
+ 
+        Worksheets("Scotia User Stories").Range("A1").Copy Worksheets(cell.Value).Range("A1")
+     
+    End If
+ 
+'Continue with next cell in cell range
+Next cell
+ 
+'Go here if an error occurs
+Errorhandling:
+ 
+'Stop macro
+End Sub
+
